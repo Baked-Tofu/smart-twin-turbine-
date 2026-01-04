@@ -218,12 +218,25 @@ body {
 
 .viewer-3d-placeholder {
     width: 100%;
-    height: 320px;             
-    background-color: #151624;
-    border: 1px solid #3d405b;
+    height: 320px; 
+    background-color: var(--log-bg);
+    border: 1px solid var(--border-color);
     border-radius: 8px;
     margin-top: 10px;
+    position: relative; 
+    overflow: hidden;
 
-    position: relative;        
-    overflow: hidden;           
+    /* Allows model interaction without scrolling the whole page */
+    touch-action: none; 
+    cursor: grab;
+}
+
+.viewer-3d-placeholder:active {
+    cursor: grabbing;
+}
+
+/* Fix for the internal Three.js canvas */
+.viewer-3d-placeholder canvas {
+    display: block;
+    outline: none;
 }
